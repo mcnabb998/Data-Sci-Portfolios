@@ -6,7 +6,6 @@ Hi, I'm Jane Doe, a data scientist exploring sentiment analysis and analytics. [
 
 ## Projects
 - [Amazon Stars vs Sentiment](../projects/amazon-stars-vs-sentiment/README.md)
-- [NBA Shot Efficiency](../projects/nba-shot-efficiency/README.md)
 - Project 3
 - Project 4
 - Project 5

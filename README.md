@@ -9,6 +9,5 @@ The `docs/` folder contains a minimal GitHub Pages site that links out to indivi
 
 ## Projects
 - [Amazon Stars vs Sentiment](projects/amazon-stars-vs-sentiment/README.md)
-- [NBA Shot Efficiency](projects/nba-shot-efficiency/README.md)
 
 More projects will be added over time.
