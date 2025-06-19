@@ -54,6 +54,16 @@ This downloads a small slice of the Amazon Reviews dataset, executes the
 analysis notebooks, trains a lightweight model and copies the generated
 figures into `results/`.
 
+## ⚡ Quickstart
+```bash
+git clone <repo>
+cd repo
+# Codespaces spins up automatically OR:
+conda env create -f environment.yml
+conda activate stars-sentiment
+make all
+```
+
 ## 🛠️ Methods Summary
 
 - **Data Source** – Amazon Reviews 2023

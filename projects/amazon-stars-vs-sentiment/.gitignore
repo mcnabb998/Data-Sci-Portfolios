@@ -1,0 +1,7 @@
+.cache/
+datasets_cache/
+*.parquet
+*.arrow
+results/*
+checkpoints/
+__pycache__/

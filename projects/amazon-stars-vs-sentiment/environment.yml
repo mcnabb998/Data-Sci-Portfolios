@@ -1,4 +1,4 @@
-name: stars-vs-sentiment
+name: stars-sentiment
 channels:
   - defaults
   - conda-forge
@@ -15,5 +15,5 @@ dependencies:
   - accelerate
   - shap
   - jupyterlab
-  - ipykernel
   - ipywidgets
+  - ipykernel
