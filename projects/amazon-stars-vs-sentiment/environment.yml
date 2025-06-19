@@ -1,0 +1,19 @@
+name: stars-vs-sentiment
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - datasets
+  - transformers
+  - sentencepiece
+  - accelerate
+  - shap
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
