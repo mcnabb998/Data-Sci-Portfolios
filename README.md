@@ -11,3 +11,12 @@ The `docs/` folder contains a minimal GitHub Pages site that links out to indivi
 - [Amazon Stars vs Sentiment](projects/amazon-stars-vs-sentiment/README.md)
 
 More projects will be added over time.
+
+## Quickstart
+
+```bash
+cd projects/amazon-stars-vs-sentiment
+make all
+```
+
+For details of each step, see the [notebooks directory](projects/amazon-stars-vs-sentiment/notebooks/).

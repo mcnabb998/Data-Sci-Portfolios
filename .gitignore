@@ -20,3 +20,9 @@ venv/
 
 # Logs
 *.log
+# Project data and cache
+.cache/
+datasets_cache/
+*.parquet
+*.arrow
+checkpoints/

@@ -42,10 +42,17 @@ pipeline matures.
 
 ## ⚙️ Setup
 
-Setup instructions are still evolving.  Once the environment file and
-data download scripts are finalised they will be placed in this
-repository.  For now the project is best explored by reading the
-notebooks (coming soon) and inspecting the sample results.
+Create the Conda environment and run the automated workflow:
+
+```bash
+conda env create -f environment.yml
+conda activate stars-vs-sentiment
+make all
+```
+
+This downloads a small slice of the Amazon Reviews dataset, executes the
+analysis notebooks, trains a lightweight model and copies the generated
+figures into `results/`.
 
 ## 🛠️ Methods Summary
 
