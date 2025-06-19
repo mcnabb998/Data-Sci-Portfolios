@@ -1,0 +1,43 @@
+{
+  // -----------------------------------------------------------------
+  // Dev Container  – Stars-vs-Sentiment (Conda)
+  // -----------------------------------------------------------------
+  "name": "stars-sentiment-conda",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  // 1️⃣  Add Conda via the official dev-container feature
+  "features": {
+    "ghcr.io/devcontainers/features/anaconda:1": {
+      "installJupyterSupport": "true"        // adds lab + kernel glue
+    }
+  },
+
+  // 2️⃣  Commands that run after the image + features are ready
+  "postCreateCommand": [
+    // create the environment from your YAML
+    "conda env create -f environment.yml || true",  // ‘true’ keeps build idempotent
+    // register kernel + make default
+    "echo 'source activate stars-sentiment' >> ~/.bashrc",
+    "python -m ipykernel install --user --name stars-sentiment"
+  ],
+
+  // 3️⃣  Tell VS Code which interpreter to use in notebooks/terminals
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/envs/stars-sentiment/bin/python",
+        "python.terminal.activateEnvironment": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  },
+
+  // 4️⃣  Mount repo in /workspace the usual way
+  "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
+
+  // 5️⃣  Forward Jupyter port if you want to open Lab UI
+  "forwardPorts": [8888]
+}
