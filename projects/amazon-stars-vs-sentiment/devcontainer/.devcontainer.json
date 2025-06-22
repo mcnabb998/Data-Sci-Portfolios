@@ -1,0 +1,17 @@
+{
+  "name": "Amazon Stars vs Sentiment",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/anaconda:1": {
+      "installJupyterSupport": true
+    }
+  },
+  "postCreateCommand": [
+    "conda env create -f environment.yml || true",
+    "echo 'source activate stars-sentiment' >> ~/.bashrc",
+    "python -m ipykernel install --user --name stars-sentiment"
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "/opt/conda/envs/stars-sentiment/bin/python"
+  }
+}
