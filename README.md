@@ -1,6 +1,6 @@
 # Stars vs Sentiment Portfolio
 
-[![GitHub Pages](https://github.com/username/stars-v-sentiment-portfolio/actions/workflows/pages.yml/badge.svg)](https://github.com/username/stars-v-sentiment-portfolio/actions/workflows/pages.yml)
+[![GitHub Pages](https://github.com/username/stars-v-sentiment-portfolio/actions/workflows/pages.yml/badge.svg)](https://mcnabb998.github.io/Data-Sci-Portfolios/)
 ![Python](https://img.shields.io/badge/python-3.10-blue)
 
 A collection of data-science projects examining how star ratings align with text sentiment, alongside a sample sports analytics study. Each project highlights methods, visuals, and reproducible code using open datasets.
