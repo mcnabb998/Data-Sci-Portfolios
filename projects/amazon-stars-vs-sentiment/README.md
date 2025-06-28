@@ -18,8 +18,8 @@ spam-detection pipelines.
 
 | Component | State |
 |-----------|-------|
-| White paper (PDF) | ✅ uploaded `Stars_vs_Sentiment_Final_WhitePaper.pdf` |
-| 10‑slide video (7 min) | ✅ `Stars_vs_Sentiment_Presentation.mp4` |
+| White paper (PDF) | — |
+| 10‑slide video (7 min) | — |
 | Code & notebooks | ✅ pushed to `main` |
 | MiniLM star‑prediction fine‑tune | 🔄 optional – planned Q4 2025 |
 
@@ -41,7 +41,7 @@ spam-detection pipelines.
 |---------|----------|
 | 64 % of reviews align (divergence ≈ 0) | `results/divergence_hist.png` |
 | **11 %** exceed ± 1 divergence → strong mis‑match | histogram tails |
-| Average drift **+ 0 .04** → mild positivity bias | white‑paper § 6 |
+| Average drift **+ 0 .04** → mild positivity bias | `notebooks/01_EDA.ipynb` |
 | Verified‑purchase reviews show 40 % lower drift odds | Appendix C Q4 |
 | Divergence + meta features ⇒ precision 0.55 for spam | Appendix C Q7 |
 
@@ -63,8 +63,6 @@ _Divergence = sentiment score − normalised star, where stars 1‑5 map to
 │   ├── divergence_hist.png
 │   ├── polarity_vs_rating.png
 │   └── helpful_vs_divergence.png
-├── Stars_vs_Sentiment_Final_WhitePaper.pdf
-├── Stars_vs_Sentiment_Presentation.mp4
 ├── environment.yml
 └── README.md                    # this file
 ```
@@ -98,9 +96,6 @@ computes divergence, and regenerates every figure under `results/`.
 | EDA | pandas & seaborn |
 | Spam test | XGBoost on divergence + length + account‑age |
 | Compute | CPU 15 min / A10 GPU 4 min |
-
-Full details—including assumptions, limitations, and ethical controls—are in
-Sections 5‑14 of the PDF.
 
 ---
 
