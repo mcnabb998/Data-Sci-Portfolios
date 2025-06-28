@@ -6,8 +6,7 @@ FIGURES = [
     'star_counts.png',
     'divergence_hist.png',
     'polarity_vs_rating.png',
-    'helpful_vs_div.png',
-    'shap_top20.png'
+    'helpful_vs_divergence.png'
 ]
 
 def main(out_dir):
