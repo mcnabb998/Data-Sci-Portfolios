@@ -109,6 +109,13 @@ All PNGs refresh under `results/`, and the notebook records runtime logs.
 
 ---
 
+## 🤖 Run the Modeling Notebook
+The notebook `notebooks/02_Modeling.ipynb` fine-tunes a small BERT regressor.
+It expects `data/clean_1M.parquet`, which is produced during the EDA step.
+Run `make eda` or execute `notebooks/01_EDA.ipynb` first so the file exists.
+
+---
+
 ## 🛡️ Ethical & Fairness Guard‑Rails
 * Reviewer IDs hashed; no PII stored.  
 * Fairness dashboard flags any subgroup with drift > 0 .05.  
