@@ -18,8 +18,8 @@ spam-detection pipelines.
 
 | Component | State |
 |-----------|-------|
-| White paper (PDF) | — |
-| 10‑slide video (7 min) | — |
+| White paper (PDF) | 🚫 not in repository |
+| 10‑slide video (7 min) | 🚫 not in repository |
 | Code & notebooks | ✅ pushed to `main` |
 | MiniLM star‑prediction fine‑tune | 🔄 optional – planned Q4 2025 |
 
@@ -54,10 +54,9 @@ _Divergence = sentiment score − normalised star, where stars 1‑5 map to
 ```
 .
 ├── data/                         # parquet slices & model artefacts
+│   └── get_data.py              # streaming download + sample
 ├── notebooks/
 │   └── 01_EDA.ipynb             # sentiment, divergence, figures
-├── scripts/
-│   └── get_data.py              # streaming download + sample
 ├── results/
 │   ├── star_counts.png
 │   ├── divergence_hist.png
@@ -104,6 +103,13 @@ computes divergence, and regenerates every figure under `results/`.
 jupyter nbconvert --execute --to notebook   --inplace notebooks/01_EDA.ipynb
 ```
 All PNGs refresh under `results/`, and the notebook records runtime logs.
+
+---
+
+## 🤖 Run the Modeling Notebook
+The notebook `notebooks/02_Modeling.ipynb` fine-tunes a small BERT regressor.
+It expects `data/clean_1M.parquet`, which is produced during the EDA step.
+Run `make eda` or execute `notebooks/01_EDA.ipynb` first so the file exists.
 
 ---
 
