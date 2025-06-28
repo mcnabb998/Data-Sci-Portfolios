@@ -18,8 +18,8 @@ spam-detection pipelines.
 
 | Component | State |
 |-----------|-------|
-| White paper (PDF) | ✅ uploaded `Stars_vs_Sentiment_Final_WhitePaper.pdf` |
-| 10‑slide video (7 min) | ✅ `Stars_vs_Sentiment_Presentation.mp4` |
+| White paper (PDF) | 🚫 not in repository |
+| 10‑slide video (7 min) | 🚫 not in repository |
 | Code & notebooks | ✅ pushed to `main` |
 | MiniLM star‑prediction fine‑tune | 🔄 optional – planned Q4 2025 |
 
@@ -54,17 +54,14 @@ _Divergence = sentiment score − normalised star, where stars 1‑5 map to
 ```
 .
 ├── data/                         # parquet slices & model artefacts
+│   └── get_data.py              # streaming download + sample
 ├── notebooks/
 │   └── 01_EDA.ipynb             # sentiment, divergence, figures
-├── scripts/
-│   └── get_data.py              # streaming download + sample
 ├── results/
 │   ├── star_counts.png
 │   ├── divergence_hist.png
 │   ├── polarity_vs_rating.png
 │   └── helpful_vs_divergence.png
-├── Stars_vs_Sentiment_Final_WhitePaper.pdf
-├── Stars_vs_Sentiment_Presentation.mp4
 ├── environment.yml
 └── README.md                    # this file
 ```
