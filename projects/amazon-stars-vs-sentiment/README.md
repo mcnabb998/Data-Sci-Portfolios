@@ -41,7 +41,7 @@ spam-detection pipelines.
 |---------|----------|
 | 64 % of reviews align (divergence ≈ 0) | `results/divergence_hist.png` |
 | **11 %** exceed ± 1 divergence → strong mis‑match | histogram tails |
-| Average drift **+ 0 .04** → mild positivity bias | white‑paper § 6 |
+| Average drift **+ 0 .04** → mild positivity bias | `notebooks/01_EDA.ipynb` |
 | Verified‑purchase reviews show 40 % lower drift odds | Appendix C Q4 |
 | Divergence + meta features ⇒ precision 0.55 for spam | Appendix C Q7 |
 
@@ -95,9 +95,6 @@ computes divergence, and regenerates every figure under `results/`.
 | EDA | pandas & seaborn |
 | Spam test | XGBoost on divergence + length + account‑age |
 | Compute | CPU 15 min / A10 GPU 4 min |
-
-Full details—including assumptions, limitations, and ethical controls—are in
-Sections 5‑14 of the PDF.
 
 ---
 
