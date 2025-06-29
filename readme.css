@@ -1,0 +1,17 @@
+.readme-hero {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#fdfbfb 0%,#ebedee 100%);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+.readme-hero img.badge {
+  margin: 0 0.25em;
+}
+.readme-hero p.tagline {
+  font-size: 1.2em;
+}
+.readme-hero img.chart {
+  max-width: 90%;
+  border-radius: 8px;
+}
