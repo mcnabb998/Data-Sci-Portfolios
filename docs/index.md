@@ -6,3 +6,5 @@ Hi, I'm Matthew McNabb, a data scientist exploring sentiment analysis and analyt
 
 ## Projects
 - [Amazon Stars vs Sentiment](../projects/amazon-stars-vs-sentiment/README.md)
+- [FEMA Flood Insurance Claim Prediction Model](../projects/fema-flood-claims/README.md)
+- [Real Estate COVID WFH Features](../projects/real-estate-covid-wfh/README.md)
