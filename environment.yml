@@ -1,0 +1,41 @@
+name: data-sci-portfolios
+channels:
+- conda-forge
+- defaults
+dependencies:
+  # Core
+  - python=3.10
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
+  - pandas
+  - numpy
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - plotly
+  - shap
+
+  # NLP / Transformers
+  - transformers
+  - datasets
+  - sentencepiece
+  - accelerate
+  - tqdm
+
+  # Time-series / tabular extras
+  - statsmodels
+  - xgboost
+  - lightgbm
+
+  # Utilities
+  - jupytext
+  - nbstripout
+  - black
+  - isort
+
+  # Pip-only packages
+  - pip
+  - pip:
+      - sentence_transformers
