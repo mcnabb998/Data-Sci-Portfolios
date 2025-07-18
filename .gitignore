@@ -15,6 +15,8 @@ __pycache__/
 ENV/
 venv/
 
+# Node
+node_modules/
 # macOS
 .DS_Store
 
@@ -26,3 +28,7 @@ datasets_cache/
 *.parquet
 *.arrow
 checkpoints/
+
+# React build
+docs/react-portfolio/build/
+docs/react-portfolio/package-lock.json
