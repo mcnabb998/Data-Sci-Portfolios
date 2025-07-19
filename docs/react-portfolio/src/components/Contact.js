@@ -9,15 +9,15 @@ export default function Contact() {
       <p>Feel free to reach out with questions or opportunities!</p>
       <div style={{margin: '1.5rem 0'}}>
         <p>
-          <FaEnvelope style={{marginRight: 8}} />
+          <span style={{marginRight: 8}}><FaEnvelope /></span>
           <a href="mailto:mcnabb998@gmail.com">mcnabb998@gmail.com</a>
         </p>
         <p>
-          <FaLinkedin style={{marginRight: 8}} />
+          <span style={{marginRight: 8}}><FaLinkedin /></span>
           <a href="https://www.linkedin.com/in/matthew-mcnabb-a964007a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </p>
         <p>
-          <FaGithub style={{marginRight: 8}} />
+          <span style={{marginRight: 8}}><FaGithub /></span>
           <a href="https://github.com/mcnabb998" target="_blank" rel="noopener noreferrer">GitHub</a>
         </p>
       </div>
