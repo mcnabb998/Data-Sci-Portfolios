@@ -25,6 +25,11 @@ jobs:
       - name: Build React app
         run: npm run build
         working-directory: docs/react-portfolio
+      - name: Copy project pages into docs
+        run: |
+          mkdir -p docs/projects
+          cp -r projects/* docs/projects/
+          find docs/projects -name 'index.md' -exec sed -i 's|../../docs/assets/css/style.css|../assets/css/style.css|g' {} +
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -6,10 +6,10 @@ export default function Hero() {
       <h1>Data Science Portfolio</h1>
       <p>Data-driven solutions for real-world impact.</p>
       <p>
-        <a href="https://www.linkedin.com/in/yourprofile">
+        <a href="https://www.linkedin.com/in/matthew-mcnabb-a964007a/">
           <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin" />
         </a>
-        <a href="mailto:you@example.com">📧</a>
+        <a href="mailto:mcnabb998@gmail.com">📧</a>
       </p>
     </div>
   );
