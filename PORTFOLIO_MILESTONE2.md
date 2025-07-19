@@ -5,7 +5,7 @@
 - **About**: `about.md` with personal story and skills
 - **Projects**: each project in `projects/<project-name>/` containing `index.md` and assets
 - **Assets**: `assets/css/style.css`, `assets/img/`, `assets/js/`
-- **Extras**: `contact.md` for a dedicated contact page
+- **Extras**: `contact.html` for a dedicated contact page
 
 Suggested navigation order: **Home → About → Projects → Experience → Contact**
 

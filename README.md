@@ -15,7 +15,7 @@ A collection of mini-projects showcasing reproducible analyses of review data. E
 
 The [`docs/`](docs/) directory powers a simple GitHub Pages site that links out to individual portfolio pieces.
 
-New in **Milestone 2**: dedicated [About](docs/about.md) and [Contact](docs/contact.md) pages plus a refreshed landing page.
+New in **Milestone 2**: dedicated [About](docs/about.md) and [Contact](docs/contact.html) pages plus a refreshed landing page.
 
 **Highlights**
 - 📊 Reproducible notebooks
