@@ -6,7 +6,7 @@ export default function Nav() {
       <a href="index.html">Home</a> |
       <a href="about.md">About</a> |
       <a href="#projects">Projects</a> |
-      <a href="contact.md">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
   );
 }
