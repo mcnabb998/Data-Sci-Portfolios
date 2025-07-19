@@ -4,7 +4,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../s
 import pytest
 import responses
 import tempfile
-import os
 import pandas as pd
 from pathlib import Path
 from analysis.london_underground.download_tfl_upgrade_data import download_public_almanac, download_rods, RODS_URL, RODS_PARQUET, EXCESS_JOURNEY_CSV, LOST_CUSTOMER_CSV
