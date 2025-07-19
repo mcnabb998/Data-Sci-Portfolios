@@ -82,7 +82,7 @@ def main() -> None:
 
     # Save raw JSONL (one line per line‑object)
     raw_path = Path(args.outdir, RAW_JSON)
-    with raw_path.open("w", encoding="utf‑8") as f:
+    with raw_path.open("w", encoding="utf-8") as f:
         for line_obj in resp.json():
             f.write(json.dumps(line_obj) + "\n")
     print(f"✓ Raw JSON written → {raw_path}")
