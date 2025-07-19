@@ -3,7 +3,8 @@
 make_parquet.py
 ETL script for LU upgrades project: converts raw CSV/XLSX files to cleaned Parquet files.
 """
-import sys, argparse
+import sys
+import argparse
 from pathlib import Path
 import pandas as pd
 
