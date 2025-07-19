@@ -63,7 +63,6 @@ def etl_xlsx(raw_name, out_name, force):
         df = xls.parse(sheet)
         df["sheet"] = sheet
         df = df.rename(columns={c: c.lower().replace(" ", "_") for c in df.columns})
-        df = df.rename(columns={"period": "period", "metric": "metric", "value": "value"})
         df = df.dropna(how="all")
         dfs.append(df)
     long_df = pd.concat(dfs, ignore_index=True)
