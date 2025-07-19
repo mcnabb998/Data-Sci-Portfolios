@@ -1,0 +1,21 @@
+Line,year,station_ridership_alloc
+Bakerloo,2014,128920597.0
+Bakerloo,2017,126625457.0
+Central,2014,448404610.0
+Central,2017,462395277.0
+District,2014,583157537.0
+District,2017,574404396.0
+Hammersmith & City,2014,82508396.0
+Hammersmith & City,2017,84125338.0
+Jubilee,2014,185459502.0
+Jubilee,2017,204526206.0
+Metropolitan,2014,374576765.0
+Metropolitan,2017,376817359.0
+Northern,2014,437707893.0
+Northern,2017,460251006.0
+Piccadilly,2014,288579398.0
+Piccadilly,2017,273581852.0
+Victoria,2014,141150956.0
+Victoria,2017,144131095.0
+Waterloo & City,2014,91491846.0
+Waterloo & City,2017,91270641.0
