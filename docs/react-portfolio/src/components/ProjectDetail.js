@@ -113,7 +113,9 @@ function ProjectDetail() {
             <div style={{color:'#a00',fontWeight:'bold',marginBottom:'1em'}}>README fetch error: {readmeError}</div>
           )}
           {readme && typeof readme === 'string' && readme.trim().length > 0 ? (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{readme}</ReactMarkdown>
+            <div className="markdown-body">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{readme}</ReactMarkdown>
+            </div>
           ) : (
             <div style={{color:'#a00',fontWeight:'bold'}}>Project documentation is not yet available or could not be loaded.</div>
           )}
@@ -127,6 +129,53 @@ function ProjectDetail() {
         </div>
       </div>
       <Link to="/projects" style={{marginTop:'2em', display:'inline-block', color:'#4e7cff', fontWeight:'700', fontSize:'1.1em'}}>← Back to Projects</Link>
+      <style>{`
+        .markdown-body {
+          font-size: 1.08em;
+          color: #222;
+          line-height: 1.7;
+          word-break: break-word;
+        }
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+          font-weight: 700;
+          color: #2a3a6e;
+          margin-top: 1.5em;
+          margin-bottom: 0.7em;
+        }
+        .markdown-body h1 { font-size: 2em; }
+        .markdown-body h2 { font-size: 1.5em; }
+        .markdown-body h3 { font-size: 1.2em; }
+        .markdown-body ul, .markdown-body ol {
+          margin-left: 2em;
+          margin-bottom: 1em;
+        }
+        .markdown-body table {
+          border-collapse: collapse;
+          width: 100%;
+          margin-bottom: 1.5em;
+        }
+        .markdown-body th, .markdown-body td {
+          border: 1px solid #eaeaea;
+          padding: 0.5em 0.8em;
+        }
+        .markdown-body th {
+          background: #f5f7fa;
+          font-weight: 700;
+        }
+        .markdown-body pre, .markdown-body code {
+          background: #eef;
+          border-radius: 0.3em;
+          padding: 0.2em 0.4em;
+          font-size: 0.98em;
+        }
+        .markdown-body blockquote {
+          border-left: 4px solid #4e7cff;
+          background: #f5f7fa;
+          margin: 1em 0;
+          padding: 0.7em 1em;
+          color: #555;
+        }
+      `}</style>
     </div>
   );
 }
