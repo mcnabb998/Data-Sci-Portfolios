@@ -7,7 +7,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ProjectDetail from './components/ProjectDetail';
-// ...existing code...
+import About from './components/About';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<><Hero /><Projects /></>} />
-        <Route path="/about" element={<div>About page coming soon.</div>} />
+        <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:projectId" element={<ProjectDetail />} />
         <Route path="/contact" element={<Contact />} />
