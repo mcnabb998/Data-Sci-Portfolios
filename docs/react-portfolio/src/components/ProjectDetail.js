@@ -18,8 +18,39 @@ function ImageModal({ src, alt, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
   return (
-    <div className="modal" style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'rgba(0,0,0,0.7)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1000}} onClick={onClose}>
-      <img src={src} alt={alt} style={{maxWidth:'90vw',maxHeight:'90vh',borderRadius:'1em',boxShadow:'0 2px 16px #0008'}} />
+    <div
+      className="modal"
+      style={{
+        position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+        background:'rgba(0,0,0,0.7)',
+        backdropFilter:'blur(4px)',
+        display:'flex',alignItems:'center',justifyContent:'center',zIndex:1000,
+        animation:'modalFadeIn 0.3s cubic-bezier(.4,2,.3,1)'
+      }}
+      onClick={onClose}
+    >
+      <img
+        src={src}
+        alt={alt}
+        style={{
+          maxWidth:'90vw',maxHeight:'90vh',borderRadius:'1em',
+          boxShadow:'0 8px 32px #0008',
+          border:'6px solid #fff',
+          background:'#fff',
+          transition:'transform 0.2s cubic-bezier(.4,2,.3,1)',
+          animation:'imgPopIn 0.3s cubic-bezier(.4,2,.3,1)'
+        }}
+      />
+      <style>{`
+        @keyframes modalFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes imgPopIn {
+          from { transform: scale(0.8); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+      `}</style>
     </div>
   );
 }
@@ -74,15 +105,20 @@ function ProjectDetail() {
   }
 
   return (
-    <div style={{
-      padding: '2em',
-      maxWidth: '1000px',
-      margin: '0 auto',
-      background: 'linear-gradient(120deg, #f5f7fa 60%, #e3e9ff 100%)',
-      borderRadius: '1.5em',
-      boxShadow: '0 4px 32px #0002',
-      border: '1px solid #eaeaea'
-    }}>
+    <div
+      style={{
+        padding: '2.5em 2em 2em 2em',
+        maxWidth: '1800px',
+        margin: '2em auto',
+        background: 'linear-gradient(120deg, #f5f7fa 60%, #e3e9ff 100%)',
+        borderRadius: '2em',
+        boxShadow: '0 8px 48px #4e7cff22',
+        border: '1px solid #eaeaea',
+        position:'relative',
+        width: '90vw',
+        minWidth: '320px'
+      }}
+    >
       <h2 style={{fontSize:'2.5em', fontWeight:'800', marginBottom:'0.5em', color:'#2a3a6e', letterSpacing:'-1px'}}>{project.name}</h2>
       <div style={{fontSize:'1.2em', color:'#444', marginBottom:'1.5em', fontWeight:'500'}}>{project.description}</div>
       {/* Debug info for troubleshooting */}
@@ -95,25 +131,54 @@ function ProjectDetail() {
       </div>
       {/* Always render images if present */}
       {project.images && project.images.length > 0 && (
-        <div style={{display:'flex',gap:'2em',flexWrap:'wrap',marginBottom:'2em'}}>
+        <div style={{
+          display:'grid',
+          gridTemplateColumns:'repeat(auto-fit, minmax(320px, 1fr))',
+          gap:'2em',
+          marginBottom:'2em',
+          alignItems:'stretch'
+        }}>
           {project.images.map((img, idx) => (
-            <div key={idx} style={{flex:'1 1 300px',textAlign:'center'}}>
+            <div key={idx} style={{
+              background:'#fff',
+              borderRadius:'1.2em',
+              boxShadow:'0 2px 16px #4e7cff22',
+              padding:'1em',
+              textAlign:'center',
+              transition:'box-shadow 0.2s',
+              cursor:'pointer',
+              position:'relative',
+              overflow:'hidden'
+            }}>
               <img
                 src={(process.env.PUBLIC_URL || '') + img.src}
                 alt={img.alt}
                 style={{
                   maxWidth:'100%',
                   borderRadius:'1em',
-                  boxShadow:'0 2px 12px #0002',
-                  transition:'transform 0.2s cubic-bezier(.4,2,.3,1)',
+                  boxShadow:'0 4px 24px #4e7cff22',
+                  transition:'transform 0.2s cubic-bezier(.4,2,.3,1), box-shadow 0.2s',
                   cursor:'pointer',
                   zIndex:1
                 }}
-                onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
-                onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = 'scale(1.08)';
+                  e.currentTarget.style.boxShadow = '0 8px 32px #4e7cff44';
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 24px #4e7cff22';
+                }}
                 onClick={() => setModalImg({src: (process.env.PUBLIC_URL || '') + img.src, alt: img.alt})}
               />
-              <div style={{fontSize:'1em',color:'#666',marginTop:'0.5em'}}>{img.caption}</div>
+              <div style={{
+                fontSize:'1.08em',
+                color:'#4e7cff',
+                marginTop:'0.7em',
+                fontWeight:'600',
+                letterSpacing:'0.5px',
+                textShadow:'0 1px 8px #4e7cff22'
+              }}>{img.caption}</div>
             </div>
           ))}
         </div>
@@ -122,7 +187,7 @@ function ProjectDetail() {
       {modalImg && (
         <ImageModal src={modalImg.src} alt={modalImg.alt} onClose={() => setModalImg(null)} />
       )}
-      <div style={{background:'#f8faff', borderRadius:'1em', boxShadow:'0 1px 8px #0001', padding:'1.5em', marginBottom:'2em'}}>
+      <div style={{background:'linear-gradient(120deg, #f8faff 80%, #e3e9ff 100%)', borderRadius:'1.2em', boxShadow:'0 2px 16px #4e7cff22', padding:'2em', marginBottom:'2em', border:'1px solid #eaeaea'}}>
         <h3 style={{color:'#2a3a6e', fontWeight:'700', fontSize:'1.2em', marginBottom:'0.7em'}}>Project Documentation</h3>
         <div style={{fontSize:'1.08em', color:'#444'}}>
           {/* Debug output for readme type and value */}
@@ -133,15 +198,30 @@ function ProjectDetail() {
             <div style={{color:'#a00',fontWeight:'bold',marginBottom:'1em'}}>README fetch error: {readmeError}</div>
           )}
           {readme && typeof readme === 'string' && readme.trim().length > 0 ? (
-            <div className="markdown-body">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{readme}</ReactMarkdown>
+            <div className="markdown-body" style={{overflowX:'auto'}}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  table: ({node, ...props}) => (
+                    <table style={{width:'100%',margin:'1.5em 0',borderCollapse:'collapse',fontSize:'1.08em',background:'#fff',boxShadow:'0 1px 8px #0001',borderRadius:'0.5em',overflow:'hidden'}} {...props} />
+                  ),
+                  th: ({node, ...props}) => (
+                    <th style={{padding:'0.8em',background:'#f5f7fa',border:'1px solid #eaeaea',fontWeight:'700',color:'#2a3a6e',fontSize:'1.08em'}} {...props} />
+                  ),
+                  td: ({node, ...props}) => (
+                    <td style={{padding:'0.8em',border:'1px solid #eaeaea',fontSize:'1.08em',background:'#fff'}} {...props} />
+                  )
+                }}
+              >{readme}</ReactMarkdown>
             </div>
           ) : (
             <div style={{color:'#a00',fontWeight:'bold'}}>Project documentation is not yet available or could not be loaded.</div>
           )}
           {project.documentation && (
             <div style={{marginTop:'1.5em'}}>
-              <a href={project.documentation} target="_blank" rel="noopener noreferrer" style={{color:'#4e7cff', fontWeight:'700', fontSize:'1.08em', textDecoration:'underline'}}>
+              <a href={project.documentation.startsWith('http') ? project.documentation : 'https://github.com/mcnabb998/Data-Sci-Portfolios/tree/main/projects/' + project.id}
+                 target="_blank" rel="noopener noreferrer"
+                 style={{color:'#4e7cff', fontWeight:'700', fontSize:'1.08em', textDecoration:'underline'}}>
                 View Documentation & Data on GitHub
               </a>
             </div>
