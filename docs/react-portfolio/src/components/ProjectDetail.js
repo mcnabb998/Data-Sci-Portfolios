@@ -30,6 +30,8 @@ function ProjectDetail() {
   const project = projects.find(p => p.id === projectId);
   const [readme, setReadme] = useState('');
   const [readmeError, setReadmeError] = useState(null);
+  // Modal state for enlarged image
+  const [modalImg, setModalImg] = useState(null);
   // Debug output to browser console
   useEffect(() => {
     console.log('typeof readme:', typeof readme);
@@ -96,11 +98,29 @@ function ProjectDetail() {
         <div style={{display:'flex',gap:'2em',flexWrap:'wrap',marginBottom:'2em'}}>
           {project.images.map((img, idx) => (
             <div key={idx} style={{flex:'1 1 300px',textAlign:'center'}}>
-              <img src={(process.env.PUBLIC_URL || '') + img.src} alt={img.alt} style={{maxWidth:'100%',borderRadius:'1em',boxShadow:'0 2px 12px #0002'}} />
+              <img
+                src={(process.env.PUBLIC_URL || '') + img.src}
+                alt={img.alt}
+                style={{
+                  maxWidth:'100%',
+                  borderRadius:'1em',
+                  boxShadow:'0 2px 12px #0002',
+                  transition:'transform 0.2s cubic-bezier(.4,2,.3,1)',
+                  cursor:'pointer',
+                  zIndex:1
+                }}
+                onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'}
+                onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                onClick={() => setModalImg({src: (process.env.PUBLIC_URL || '') + img.src, alt: img.alt})}
+              />
               <div style={{fontSize:'1em',color:'#666',marginTop:'0.5em'}}>{img.caption}</div>
             </div>
           ))}
         </div>
+      )}
+      {/* Image Modal for enlargement */}
+      {modalImg && (
+        <ImageModal src={modalImg.src} alt={modalImg.alt} onClose={() => setModalImg(null)} />
       )}
       <div style={{background:'#f8faff', borderRadius:'1em', boxShadow:'0 1px 8px #0001', padding:'1.5em', marginBottom:'2em'}}>
         <h3 style={{color:'#2a3a6e', fontWeight:'700', fontSize:'1.2em', marginBottom:'0.7em'}}>Project Documentation</h3>

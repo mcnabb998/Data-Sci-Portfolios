@@ -5,6 +5,23 @@ const projects = [
     path: '/projects/london-underground-upgrades',
     description: 'Causal impact of infrastructure upgrades on LU reliability, ridership, and outcomes (2010–2024)',
     documentation: '/projects/london-underground-upgrades/README.md'
+    ,images: [
+      {
+        src: '/assets/london/ejt_heatmap.png',
+        alt: 'LU Event Journey Time Heatmap',
+        caption: 'Event Journey Time Heatmap: Impact of upgrades across the network.'
+      },
+      {
+        src: '/assets/london/ejt_trend_by_line.png',
+        alt: 'LU Event Journey Time Trend by Line',
+        caption: 'Event Journey Time Trend by Line: Reliability improvements over time.'
+      },
+      {
+        src: '/assets/london/lch_stacked_area.png',
+        alt: 'LU Lost Customer Hours Stacked Area',
+        caption: 'Lost Customer Hours: Stacked area chart showing reduction in delays.'
+      }
+    ]
   },
   {
     id: 'amazon-stars-vs-sentiment',
