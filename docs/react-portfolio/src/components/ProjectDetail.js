@@ -1,13 +1,67 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import projects from './projectsData';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+// Removed duplicate imports
+// Images are now loaded dynamically from project data
 
-export default function ProjectDetail() {
+// Modal for image expansion
+function ImageModal({ src, alt, onClose }) {
+  React.useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+  return (
+    <div className="modal" style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'rgba(0,0,0,0.7)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1000}} onClick={onClose}>
+      <img src={src} alt={alt} style={{maxWidth:'90vw',maxHeight:'90vh',borderRadius:'1em',boxShadow:'0 2px 16px #0008'}} />
+    </div>
+  );
+}
+
+function ProjectDetail() {
+  // Debug output to browser console (only inside useEffect below)
   const { projectId } = useParams();
-  const project = projects.find(p => {
-    const lastSegment = p.path.split('/').pop();
-    return lastSegment === projectId;
-  });
+  const project = projects.find(p => p.id === projectId);
+  const [readme, setReadme] = useState('');
+  const [readmeError, setReadmeError] = useState(null);
+  // Debug output to browser console
+  useEffect(() => {
+    console.log('typeof readme:', typeof readme);
+    console.log('readme preview:', typeof readme === 'string' ? readme.slice(0,200) : readme);
+  }, [readme]);
+
+  useEffect(() => {
+    console.log('ProjectDetail useEffect: projectId:', projectId, 'project:', project);
+    if (!project || !project.id) {
+      setReadmeError('Project or project.id is undefined. Skipping README fetch.');
+      setReadme('');
+      return;
+    }
+    // Try to fetch README.md from the project folder
+    const readmePath = (process.env.PUBLIC_URL || '') + `/projects/${project.id}/README.md`;
+    console.log('README fetch path:', readmePath);
+    fetch(readmePath)
+      .then(res => {
+        console.log('README fetch response:', res.status, res.statusText);
+        if (res.ok) return res.text();
+        setReadmeError(`README fetch failed: ${res.status} ${res.statusText}`);
+        return '';
+      })
+      .then(text => {
+        console.log('README fetched content:', text.slice(0,500));
+        setReadme(text);
+      })
+      .catch(err => {
+        setReadmeError(`README fetch error: ${err}`);
+        setReadme('');
+      });
+  }, [projectId, project]);
 
   if (!project) {
     return <div style={{padding:'2em'}}>
@@ -18,13 +72,63 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div style={{padding:'2em', maxWidth:'700px', margin:'0 auto'}}>
-      <h2 style={{fontSize:'2em', fontWeight:'700'}}>{project.name}</h2>
-      <div style={{fontSize:'1.1em', color:'#555', margin:'1em 0'}}>{project.description}</div>
-      {project.documentation && (
-        <p><a href={project.documentation} target="_blank" rel="noopener noreferrer">Project Documentation</a></p>
+    <div style={{
+      padding: '2em',
+      maxWidth: '1000px',
+      margin: '0 auto',
+      background: 'linear-gradient(120deg, #f5f7fa 60%, #e3e9ff 100%)',
+      borderRadius: '1.5em',
+      boxShadow: '0 4px 32px #0002',
+      border: '1px solid #eaeaea'
+    }}>
+      <h2 style={{fontSize:'2.5em', fontWeight:'800', marginBottom:'0.5em', color:'#2a3a6e', letterSpacing:'-1px'}}>{project.name}</h2>
+      <div style={{fontSize:'1.2em', color:'#444', marginBottom:'1.5em', fontWeight:'500'}}>{project.description}</div>
+      {/* Debug info for troubleshooting */}
+      <div style={{background:'#ffe',color:'#a00',padding:'0.5em',marginBottom:'1em',borderRadius:'0.5em'}}>
+        <div><b>Debug:</b></div>
+        <div>project.id: {project.id}</div>
+        <div>images: {project.images ? project.images.length : 'none'}</div>
+        <div>readme length: {readme ? readme.length : 0}</div>
+        {readmeError && <div>README error: {readmeError}</div>}
+      </div>
+      {/* Always render images if present */}
+      {project.images && project.images.length > 0 && (
+        <div style={{display:'flex',gap:'2em',flexWrap:'wrap',marginBottom:'2em'}}>
+          {project.images.map((img, idx) => (
+            <div key={idx} style={{flex:'1 1 300px',textAlign:'center'}}>
+              <img src={(process.env.PUBLIC_URL || '') + img.src} alt={img.alt} style={{maxWidth:'100%',borderRadius:'1em',boxShadow:'0 2px 12px #0002'}} />
+              <div style={{fontSize:'1em',color:'#666',marginTop:'0.5em'}}>{img.caption}</div>
+            </div>
+          ))}
+        </div>
       )}
-      <Link to="/projects" style={{marginTop:'2em', display:'inline-block', color:'#4e7cff'}}>← Back to Projects</Link>
+      <div style={{background:'#f8faff', borderRadius:'1em', boxShadow:'0 1px 8px #0001', padding:'1.5em', marginBottom:'2em'}}>
+        <h3 style={{color:'#2a3a6e', fontWeight:'700', fontSize:'1.2em', marginBottom:'0.7em'}}>Project Documentation</h3>
+        <div style={{fontSize:'1.08em', color:'#444'}}>
+          {/* Debug output for readme type and value */}
+          <pre style={{background:'#eef',color:'#333',padding:'0.5em',borderRadius:'0.5em',marginBottom:'1em'}}>
+            {`typeof readme: ${typeof readme}\nreadme preview: ${typeof readme === 'string' ? readme.slice(0,200) : JSON.stringify(readme)}\nreadmeError: ${readmeError}`}
+          </pre>
+          {readmeError && (
+            <div style={{color:'#a00',fontWeight:'bold',marginBottom:'1em'}}>README fetch error: {readmeError}</div>
+          )}
+          {readme && typeof readme === 'string' && readme.trim().length > 0 ? (
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{readme}</ReactMarkdown>
+          ) : (
+            <div style={{color:'#a00',fontWeight:'bold'}}>Project documentation is not yet available or could not be loaded.</div>
+          )}
+          {project.documentation && (
+            <div style={{marginTop:'1.5em'}}>
+              <a href={project.documentation} target="_blank" rel="noopener noreferrer" style={{color:'#4e7cff', fontWeight:'700', fontSize:'1.08em', textDecoration:'underline'}}>
+                View Documentation & Data on GitHub
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+      <Link to="/projects" style={{marginTop:'2em', display:'inline-block', color:'#4e7cff', fontWeight:'700', fontSize:'1.1em'}}>← Back to Projects</Link>
     </div>
   );
 }
+
+export default ProjectDetail;
