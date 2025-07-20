@@ -27,7 +27,9 @@ New in **Milestone 2**: dedicated [About](docs/about.md) and [Contact](docs/cont
 - [Quickstart](#quickstart)
 - [Citation](#citation)
 
+
 ## Projects
+- [London Underground Upgrade Impact Analysis](projects/london-underground-upgrades/README.md) – Causal impact of infrastructure upgrades on LU reliability, ridership, and outcomes (2010–2024)
 - [Amazon Stars vs Sentiment](projects/amazon-stars-vs-sentiment/README.md)
 - [FEMA Flood Insurance Claim Prediction Model](projects/fema-flood-claims/README.md)
 - [Real Estate COVID WFH Features](projects/real-estate-covid-wfh/README.md)
