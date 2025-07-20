@@ -78,7 +78,9 @@ function ProjectDetail() {
     }
     // Only fetch README if documentation path exists
     if (project.documentation) {
-      const readmePath = `${process.env.PUBLIC_URL}/${project.documentation}`;
+      const readmePath = project.documentation.startsWith('http')
+        ? project.documentation
+        : `${process.env.PUBLIC_URL}/${project.documentation}`;
       console.log('README fetch path:', readmePath);
       fetch(readmePath)
         .then(res => {

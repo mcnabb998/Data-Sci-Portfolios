@@ -29,6 +29,12 @@ jobs:
         run: |
           mkdir -p docs/projects
           cp -r projects/* docs/projects/
+          # Copy README.md to index.md for each project
+          for d in docs/projects/*; do
+            if [ -f "$d/README.md" ]; then
+              cp "$d/README.md" "$d/index.md"
+            fi
+          done
           find docs/projects -name 'index.md' -exec sed -i 's|../../docs/assets/css/style.css|../assets/css/style.css|g' {} +
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
