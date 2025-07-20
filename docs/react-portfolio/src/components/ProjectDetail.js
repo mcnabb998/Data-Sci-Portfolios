@@ -76,24 +76,29 @@ function ProjectDetail() {
       setReadme('');
       return;
     }
-    // Try to fetch README.md from the project folder
-    const readmePath = `${process.env.PUBLIC_URL || ''}/${project.documentation}`;
-    console.log('README fetch path:', readmePath);
-    fetch(readmePath)
-      .then(res => {
-        console.log('README fetch response:', res.status, res.statusText);
-        if (res.ok) return res.text();
-        setReadmeError(`README fetch failed: ${res.status} ${res.statusText}`);
-        return '';
-      })
-      .then(text => {
-        console.log('README fetched content:', text.slice(0,500));
-        setReadme(text);
-      })
-      .catch(err => {
-        setReadmeError(`README fetch error: ${err}`);
-        setReadme('');
-      });
+    // Only fetch README if documentation path exists
+    if (project.documentation) {
+      const readmePath = `${process.env.PUBLIC_URL}/${project.documentation}`;
+      console.log('README fetch path:', readmePath);
+      fetch(readmePath)
+        .then(res => {
+          console.log('README fetch response:', res.status, res.statusText);
+          if (res.ok) return res.text();
+          setReadmeError(`README fetch failed: ${res.status} ${res.statusText}`);
+          return '';
+        })
+        .then(text => {
+          console.log('README fetched content:', text.slice(0,500));
+          setReadme(text);
+        })
+        .catch(err => {
+          setReadmeError(`README fetch error: ${err}`);
+          setReadme('');
+        });
+    } else {
+      setReadme('');
+      setReadmeError('No documentation available for this project.');
+    }
   }, [projectId, project]);
 
   if (!project) {
@@ -151,7 +156,7 @@ function ProjectDetail() {
               overflow:'hidden'
             }}>
               <img
-                src={`${process.env.PUBLIC_URL || ''}/${img.src}`}
+                src={`${process.env.PUBLIC_URL}/${img.src}`}
                 alt={img.alt}
                 style={{
                   maxWidth:'100%',
