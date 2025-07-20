@@ -77,9 +77,9 @@ function ProjectDetail() {
       return;
     }
     // Try to fetch README.md from the project folder
-    const readmePath = (process.env.PUBLIC_URL || '') + `/projects/${project.id}/README.md`;
+    const readmePath = `${process.env.PUBLIC_URL || ''}/projects/${project.id}/README.md`;
     console.log('README fetch path:', readmePath);
-    fetch(readmePath)
+    fetch(project.documentation)
       .then(res => {
         console.log('README fetch response:', res.status, res.statusText);
         if (res.ok) return res.text();
@@ -151,7 +151,7 @@ function ProjectDetail() {
               overflow:'hidden'
             }}>
               <img
-                src={(process.env.PUBLIC_URL || '') + img.src}
+                src={img.src}
                 alt={img.alt}
                 style={{
                   maxWidth:'100%',
