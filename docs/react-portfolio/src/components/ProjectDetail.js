@@ -122,7 +122,7 @@ function ProjectDetail() {
         boxShadow: '0 8px 48px #4e7cff22',
         border: '1px solid #eaeaea',
         position:'relative',
-        width: '90vw',
+        width: '90%',
         minWidth: '320px'
       }}
     >
