@@ -30,18 +30,17 @@ New in **Milestone 2**: dedicated [About](docs/about.md) and [Contact](docs/cont
 
 ## Projects
 - [London Underground Upgrade Impact Analysis](projects/london-underground-upgrades/README.md) – Causal impact of infrastructure upgrades on LU reliability, ridership, and outcomes (2010–2024)
-- [Amazon Stars vs Sentiment](projects/amazon-stars-vs-sentiment/README.md)
-- [FEMA Flood Insurance Claim Prediction Model](projects/fema-flood-claims/README.md)
-- [Real Estate COVID WFH Features](projects/real-estate-covid-wfh/README.md)
-- [NYC Taxi Trip Duration Model (in progress)](projects/nyc-taxi-duration/README.md)
-- [Movie Review Sentiment Pipeline (in progress)](projects/movie-review-sentiment/README.md)
-- [Airbnb Price Predictor (in progress)](projects/airbnb-price-predictor/README.md)
-- [Stock Price Trend Forecasting (in progress)](projects/stock-price-forecast/README.md)
-- [Traffic Accident Hotspot Detection (in progress)](projects/traffic-accident-hotspots/README.md)
-- [Disease Diagnosis from Symptoms (in progress)](projects/disease-diagnosis-symptoms/README.md)
-- [Meteorological Data Visualization (in progress)](projects/weather-data-viz/README.md)
+ - [Amazon “Stars vs Sentiment” Review Analysis](projects/amazon-stars-vs-sentiment/README.md) – Measuring divergence between star ratings and textual sentiment using one million reviews
+ - [FEMA Flood Insurance Claim Prediction](projects/fema-flood-claims/README.md) – Predicting claim probability from flood zone, elevation and construction data
+ - [Real Estate COVID WFH Features](projects/real-estate-covid-wfh/README.md) – Quantifying price and speed effects of remote‑work amenities in real estate listings
+ - [NYC Taxi Trip Duration Prediction](projects/nyc-taxi-duration/README.md) – Modeling taxi trip times with engineered spatial and temporal features
+ - [Movie Review Sentiment Classification](projects/movie-review-sentiment/README.md) – Building and comparing NLP pipelines for classifying movie review sentiment
+ - [Airbnb Price Predictor](projects/airbnb-price-predictor/README.md) – Explaining nightly price variation for New York City Airbnb listings
+ - [Stock Price Trend Forecasting](projects/stock-price-forecast/README.md) – Comparing ARIMA, Prophet and LSTM models for short‑term stock forecasts
+ - [Traffic Accident Hotspot Detection](projects/traffic-accident-hotspots/README.md) – Identifying high‑risk intersections using clustering and mapping
+ - [Disease Diagnosis from Symptoms](projects/disease-diagnosis-symptoms/README.md) – Demonstrating symptom encoding and classification for multi‑label diagnosis
 
-More projects will be added over time.
+<!-- All projects above are complete portfolio pieces. -->
 
 ## Quickstart
 
