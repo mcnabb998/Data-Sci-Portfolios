@@ -1,20 +1,16 @@
-<link rel="stylesheet" href="../../assets/css/style.css">
-[Back to Portfolio](../../index.html)
-
+---
+title: Airbnb Price Predictor
+---
 
 # Airbnb Price Predictor 🏠💵
 
-> **Note:** This project is in progress. It will demonstrate a basic pricing model using open Airbnb listing data.
+Predicting nightly prices for Airbnb listings in New York City using the Inside Airbnb dataset.  This project explores what drives price differences, trains a state‑of‑the‑art model and examines fairness across boroughs.
 
-The aim is to showcase feature selection and regression modeling to estimate nightly rental prices in various cities.
+**Highlights:**
 
-## Project Status
-- Code & notebooks: *in progress*
-- Initial model: *planned*
+* Tree‑based models explain about **64 %** of the variance in log prices.
+* Room and property type are the strongest predictors, followed by capacity and location.
+* Manhattan listings have the highest median prices; the Bronx and Staten Island the lowest.
+* Fairness analysis shows modest differences in error across boroughs.
 
-## Quick Start
-```
-cd projects/airbnb-price-predictor
-conda env create -f environment.yml
-conda activate airbnb-price
-```
+For full details, see the [README](README.md) and the [white paper](results/white_paper.pdf).
