@@ -123,5 +123,5 @@ Bug reports and pull requests are welcome—see `CONTRIBUTING.md` for guidelines
 ## References
 
 * Guttentag, D. (2015). *Airbnb: disruptive innovation and the rise of an informal tourism accommodation sector.* Current Issues in Tourism, 18(12), 1192–1217.
-* Wang, D., & Nicolau, J. L. (2017). *Price determinants of sharing economy‑based accommodation rental: A study of listings from 33 cities on Airbnb.com.* International Journal of Hospitality Management, 62, 120–131.
+* Wang, D., & Nicolau, J. L. (2017). *Price determinants of sharing economy‑based accommodation rental: A study of listings from 33 cities on Airbnb.com.* International Journal of Hospitality Management, 62, 120–131.
 * InsideAirbnb. (2025). *Inside Airbnb: adding data to the debate*. Retrieved from http://insideairbnb.com.
