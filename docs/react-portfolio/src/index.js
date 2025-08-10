@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+// Use HashRouter instead of BrowserRouter to ensure routes work on GitHub Pages.
+// HashRouter keeps routing information after the '#' in the URL, which avoids
+// 404 errors when navigating to nested routes on GitHub Pages.
+import { HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter basename="/">
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 

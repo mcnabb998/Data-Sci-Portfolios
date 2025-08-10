@@ -1,0 +1,19 @@
+<!-- Simple redirect page for GitHub Pages when a route is not found.
+     Redirects any unknown path back to the site root so the React app
+     can handle navigation. Without this file, GitHub Pages will show
+     its own 404 page for deep links like /projects/airbnb-price-predictor. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/Data-Sci-Portfolios/" />
+    <title>Redirecting…</title>
+    <script>
+      // In case meta refresh fails, perform a JavaScript redirect.
+      window.location.replace('/Data-Sci-Portfolios/');
+    </script>
+  </head>
+  <body>
+    <p>Redirecting…</p>
+  </body>
+</html>
