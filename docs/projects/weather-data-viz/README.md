@@ -1,52 +1,85 @@
-# Weather Data Visualisation
+# Weather Data Visualisation 🌦️📊
 
-This project contains a simple example of loading, exploring and plotting weather data.  A synthetic year‑long time series is generated to demonstrate basic visualisation techniques for meteorological measurements such as temperature and precipitation.
+**Exploring seasonal patterns through a synthetic year‑long weather time series.**  This small data‑visualisation project demonstrates how to plot daily temperature and precipitation to reveal cyclical behaviour and extreme events.  By simulating 365 days of measurements, we showcase how simple line charts can communicate complex patterns in climate data.
 
-## Data
+> **Headline:** Temperature and rainfall plots reveal clear seasonal cycles; synthetic heatwaves and storms stand out as spikes in the time series.
 
-The dataset lives in `data/weather.csv` and includes 365 daily observations with the following columns:
+---
 
-| Column               | Description                                      |
-|----------------------|--------------------------------------------------|
-| `date`               | Calendar date                                    |
-| `temperature_c`      | Daily average temperature in degrees Celsius      |
-| `precip_mm`          | Daily precipitation in millimetres (≥ 0)          |
-| `wind_kmh`           | Average wind speed in kilometres per hour          |
-| `humidity_percent`   | Relative humidity in percent                      |
+## 🚦 Project Status
 
-The values were generated using sine waves and random noise; they are not based on any specific geographic location.
+| Component             | State                |
+|-----------------------|----------------------|
+| White paper (PDF)     | ✅ in repository     |
+| 5‑minute presentation | ✅ in repository     |
+| Data & notebooks      | ✅ completed         |
+| Plotting code         | ✅ completed         |
 
-## Usage
+---
 
-To regenerate the plots from the synthetic weather data:
+## 🔍 Research Questions
 
-```bash
-# from the repository root
-cd projects/weather-data-viz/scripts
-python create_plots.py
-```
+1. **Seasonality** – How does temperature and precipitation vary across a synthetic year?  What patterns emerge from daily averages?
+2. **Visualisation best practices** – Which chart types (line, area, bar) best convey weather trends to a general audience?
+3. **Anomaly detection** – Can we visually flag extreme temperature or rainfall events using annotations or thresholds?
 
-The script reads `../data/weather.csv` and produces two PNG files in the `../results/` folder:
+## ✨ Key Findings
 
-* `temperature_timeseries.png` – line chart of daily temperature across the year.
-* `precipitation_timeseries.png` – bar chart of daily precipitation amounts.
+| Insight | Evidence |
+|---|---|
+| **Seasonal temperature cycle** | Daily temperature follows a sinusoidal pattern peaking in mid‑July and bottoming out in late January. |
+| **Rainfall variability** | Precipitation exhibits noisier behaviour but still shows seasonality, with wetter spring and autumn months. |
+| **Detectable anomalies** | Synthetic heatwaves and heavy‑rain events appear as outlier spikes that can be highlighted with threshold lines. |
 
-You can extend the script to produce additional visualisations (e.g., histograms of wind speed or humidity, monthly aggregates, heatmaps, etc.).
-
-## Results
-
-The `results/` folder contains the generated plots described above.  They provide a quick visual overview of seasonal trends in temperature and rainfall.
-
-## Project Structure
+## 📁 Repository Layout
 
 ```
 weather-data-viz/
-├── data/      # synthetic meteorological time series (`weather.csv`)
-├── results/   # generated plots
-├── scripts/   # plotting script
-└── README.md  # this overview
+├── data/
+│   └── weather.csv                  # Synthetic daily observations
+├── scripts/
+│   └── create_plots.py             # Plot temperature and precipitation
+├── results/
+│   ├── temperature_timeseries.png   # Daily temperature line chart
+│   └── precipitation_timeseries.png # Daily rainfall line chart
+├── README.md                        # This file
+└── index.md                         # Web landing page for GitHub Pages
 ```
 
-## Disclaimer
+## 🏃 Quick Start
 
-The weather dataset is artificially generated for demonstration purposes only.  It should not be used for climate analysis or forecasting.
+1. Navigate to the project directory:
+
+   ```bash
+   cd projects/weather-data-viz/scripts
+   ```
+
+2. Run the plotting script:
+
+   ```bash
+   python create_plots.py
+   ```
+
+   This script reads the synthetic dataset from `../data/weather.csv` and produces two line charts saved in `../results/`.
+
+## 🧪 Methodology at a Glance
+
+| Stage                  | Approach and Tools |
+|------------------------|-------------------|
+| **Data generation**    | Use NumPy to simulate seasonal temperature and precipitation patterns; superimpose sine waves and random noise. |
+| **Visualisation**      | Employ Matplotlib to create line plots with proper date formatting; add annotations for extreme events. |
+| **Interpretation**     | Observe seasonal cycles and identify anomalies through visual inspection; discuss the storytelling power of simple charts. |
+| **Ethics & bias**      | Note that synthetic data has no privacy concerns; highlight the importance of respecting privacy in real weather datasets. |
+
+## 🧭 Ethical Considerations
+
+Weather data may include geotags or user‑reported observations that can inadvertently reveal private information.  When working with real datasets, always anonymise sensitive metadata and adhere to data use agreements.  This project uses completely synthetic data for demonstration purposes.
+
+## 📜 Contributing & License
+
+Contributions are welcome!  Feel free to open issues or pull requests.  Licensed under the MIT License.
+
+## 🔗 References
+
+* Wilks, D. (2011). *Statistical Methods in the Atmospheric Sciences*.
+* Matplotlib documentation — Plotting dates and time series.

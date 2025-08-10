@@ -128,14 +128,25 @@ function ProjectDetail() {
     >
       <h2 style={{fontSize:'2.5em', fontWeight:'800', marginBottom:'0.5em', color:'#2a3a6e', letterSpacing:'-1px'}}>{project.name}</h2>
       <div style={{fontSize:'1.2em', color:'#444', marginBottom:'1.5em', fontWeight:'500'}}>{project.description}</div>
-      {/* Debug info for troubleshooting */}
-      <div style={{background:'#ffe',color:'#a00',padding:'0.5em',marginBottom:'1em',borderRadius:'0.5em'}}>
-        <div><b>Debug:</b></div>
-        <div>project.id: {project.id}</div>
-        <div>images: {project.images ? project.images.length : 'none'}</div>
-        <div>readme length: {readme ? readme.length : 0}</div>
-        {readmeError && <div>README error: {readmeError}</div>}
-      </div>
+      {/* Debug info for troubleshooting (hidden in production)
+       *
+       * The portfolio originally displayed a debug panel showing
+       * internal state such as the project id, number of images,
+       * and README length. That information is useful during
+       * development but should not appear on the public site. We
+       * conditionally render this block only when running in a
+       * non‑production environment. When the site is built for
+       * production (NODE_ENV === 'production'), this panel will
+       * not be rendered. */}
+      {process.env.NODE_ENV !== 'production' && (
+        <div style={{background:'#ffe',color:'#a00',padding:'0.5em',marginBottom:'1em',borderRadius:'0.5em'}}>
+          <div><b>Debug:</b></div>
+          <div>project.id: {project.id}</div>
+          <div>images: {project.images ? project.images.length : 'none'}</div>
+          <div>readme length: {readme ? readme.length : 0}</div>
+          {readmeError && <div>README error: {readmeError}</div>}
+        </div>
+      )}
       {/* Always render images if present */}
       {project.images && project.images.length > 0 && (
         <div style={{
